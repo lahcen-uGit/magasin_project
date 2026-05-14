@@ -1,0 +1,24 @@
+
+
+@import './Login.css';
+
+
+.register-card {
+  max-width: 520px;
+}
+
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+
+.required {
+  color: var(--danger);
+  margin-left: 2px;
+}
