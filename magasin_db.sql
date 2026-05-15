@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2026 at 08:39 PM
+-- Generation Time: May 15, 2026 at 12:20 PM
 -- Server version: 8.0.44
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,11 @@ CREATE TABLE `clients` (
 
 INSERT INTO `clients` (`id`, `user_id`, `prenom`, `nom`, `tel`, `adresse`, `limite_credit`, `created_at`) VALUES
 (2, 2, 'lahcen', 'fff', '066666', 'casablanca', 1000.00, '2026-05-05 16:18:19'),
-(3, 3, 'test', 'test', '22222222222', 'fes', 2000.00, '2026-05-06 00:57:54');
+(3, 3, 'test', 'test', '22222222222', 'fes', 2000.00, '2026-05-06 00:57:54'),
+(5, 4, 'client1', 'client1', '06666666666', 'casablanca', 2000.00, '2026-05-13 16:21:41'),
+(6, 6, 'amine', 'aroub', '0687620988', 'casablanca', 1000.00, '2026-05-15 09:05:11'),
+(7, 6, 'youssef', 'younessi', '0662889615', 'Rabat', 2000.00, '2026-05-15 09:06:25'),
+(8, 6, 'khalid', 'ziyad', '0679154289', 'casablanca', 2000.00, '2026-05-15 09:07:23');
 
 -- --------------------------------------------------------
 
@@ -68,7 +72,12 @@ CREATE TABLE `fournisseurs` (
 --
 
 INSERT INTO `fournisseurs` (`id`, `user_id`, `nom`, `ville`, `tel`, `email`, `notes`, `created_at`) VALUES
-(1, 2, 'four1', 'Rabat', '0488888888888', 'fr@gmail.com', 'tes ehehc echechec ecechceyueic w w oow w  wueiee ', '2026-05-06 00:41:49');
+(1, 2, 'four1', 'Rabat', '0488888888888', 'fr@gmail.com', 'tes ehehc echechec ecechceyueic w w oow w  wueiee ', '2026-05-06 00:41:49'),
+(2, 4, 'fourn1', 'Casablanca', '0666666666', 'fourn1@gmail.com', 'test', '2026-05-13 16:23:05'),
+(3, 6, 'societe de lait', 'Casablanca', '0500152893', 'societeLait@gmail.com', NULL, '2026-05-15 09:12:52'),
+(4, 6, 'Cosumar', 'Rabat', '0520165312', 'cosumar@gmail.com', NULL, '2026-05-15 09:18:53'),
+(5, 6, 'Sidi Ali', 'Tanger', '0506598222', 'SidiAli@gmail.com', NULL, '2026-05-15 09:22:56'),
+(6, 6, 'Itkane', 'Casablanca', '0564897215', 'itkane@gmail.com', NULL, '2026-05-15 09:47:02');
 
 -- --------------------------------------------------------
 
@@ -90,7 +99,18 @@ CREATE TABLE `lignes_vente` (
 --
 
 INSERT INTO `lignes_vente` (`id`, `vente_id`, `produit_id`, `quantite`, `prix_unitaire`, `sous_total`) VALUES
-(1, 1, 1, 1, 20.00, 20.00);
+(1, 1, 1, 1, 20.00, 20.00),
+(3, 3, 2, 5, 200.00, 1000.00),
+(4, 4, 2, 1, 200.00, 200.00),
+(5, 5, 2, 2, 200.00, 400.00),
+(6, 6, 2, 1, 200.00, 200.00),
+(7, 7, 5, 11, 5.00, 55.00),
+(8, 8, 4, 10, 10.00, 100.00),
+(9, 8, 5, 2, 5.00, 10.00),
+(10, 9, 3, 1, 5.00, 5.00),
+(11, 10, 4, 13, 10.00, 130.00),
+(12, 10, 3, 10, 5.00, 50.00),
+(13, 11, 6, 6, 100.00, 600.00);
 
 -- --------------------------------------------------------
 
@@ -119,7 +139,12 @@ CREATE TABLE `livraisons` (
 
 INSERT INTO `livraisons` (`id`, `user_id`, `fournisseur_id`, `produit_id`, `date_livraison`, `quantite`, `prix_unitaire`, `total`, `montant_paye`, `credit`, `echeance`, `created_at`) VALUES
 (1, 2, 1, 1, '2026-05-07', 1, 10.00, 10.00, 10.00, 0.00, NULL, '2026-05-07 01:26:14'),
-(3, 2, 1, 1, '2026-05-09', 1, 20.00, 20.00, 10.00, 10.00, '2026-05-19', '2026-05-09 18:15:53');
+(3, 2, 1, 1, '2026-05-09', 1, 20.00, 20.00, 10.00, 10.00, '2026-05-19', '2026-05-09 18:15:53'),
+(4, 4, 2, 2, '2026-05-13', 8, 200.00, 1600.00, 1000.00, 600.00, '2026-05-25', '2026-05-13 16:30:57'),
+(5, 4, 2, 2, '2026-05-13', 2, 200.00, 400.00, 400.00, 0.00, '2026-05-23', '2026-05-13 19:59:37'),
+(6, 6, 4, 4, '2026-05-15', 100, 10.00, 1000.00, 500.00, 500.00, '2026-05-18', '2026-05-15 09:29:09'),
+(7, 6, 3, 3, '2026-05-15', 20, 5.00, 100.00, 100.00, 0.00, NULL, '2026-05-15 09:31:39'),
+(8, 6, 6, 6, '2026-05-15', 20, 100.00, 2000.00, 1000.00, 1000.00, '2026-05-10', '2026-05-15 09:49:35');
 
 -- --------------------------------------------------------
 
@@ -145,7 +170,12 @@ CREATE TABLE `produits` (
 --
 
 INSERT INTO `produits` (`id`, `user_id`, `fournisseur_id`, `nom`, `prix_unitaire`, `stock`, `seuil_alerte`, `unite`, `description`, `created_at`) VALUES
-(1, 2, 1, '3sal', 20.00, 11, 3, 'Kg', 'heheheh', '2026-05-06 00:52:23');
+(1, 2, 1, '3sal', 20.00, 11, 3, 'Kg', 'heheheh', '2026-05-06 00:52:23'),
+(2, 4, 2, 'produit1', 200.00, 11, 3, 'Kg', 'hehhhhhh', '2026-05-13 16:24:05'),
+(3, 6, 3, 'Lait', 5.00, 29, 5, 'Bouteille', NULL, '2026-05-15 09:16:02'),
+(4, 6, 4, 'sucre', 10.00, 177, 20, 'Pièce', NULL, '2026-05-15 09:20:35'),
+(5, 6, 5, 'Eau minrale 1L', 5.00, 17, 20, 'Bouteille', NULL, '2026-05-15 09:24:35'),
+(6, 6, 6, 'Farine (25kg)', 100.00, 44, 10, 'Sac', NULL, '2026-05-15 09:47:44');
 
 -- --------------------------------------------------------
 
@@ -169,9 +199,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `prenom`, `nom`, `email`, `password`, `shop_name`, `city`, `created_at`) VALUES
-(1, 'lahcen', 'houban', 'test@gmail.com', '$2b$10$d7HYRxd7OtYKLWbTd5Miv.8uYjJ0eLIaapdENkWBnQ6zB.ogS9YyK', 'test', 'casablanca', '2026-05-04 21:51:49'),
-(2, 'lahcen2', 'ttt', 'lahcen@gmail.com', '$2b$10$XO2C2MIVeOE/6aiq.WE7i.JTsEIVqWvATFGQd2oEblm70hqbx2odq', 'maasin2', 'Kenitra', '2026-05-05 12:22:57'),
-(3, 'lahcen3', 'houu', 'lahcen3@gmail.com', '$2b$10$jNyw.9tx.JnwXPpI/QUTMOXd1sQ//Ki5MPWQiVzEO08pFC5AwGPte', 'magasin_lh', 'Meknès', '2026-05-06 00:57:04');
+(2, 'lahcen2', 'ttt', 'lahc@gmail.com', '$2b$10$XO2C2MIVeOE/6aiq.WE7i.JTsEIVqWvATFGQd2oEblm70hqbx2odq', 'maasin2', 'Kenitra', '2026-05-05 12:22:57'),
+(3, 'lahcen3', 'houu', 'lahcen3@gmail.com', '$2b$10$jNyw.9tx.JnwXPpI/QUTMOXd1sQ//Ki5MPWQiVzEO08pFC5AwGPte', 'magasin_lh', 'Meknès', '2026-05-06 00:57:04'),
+(4, 'houban', 'houban01', 'houban@gmail.com', '$2b$10$6Kk/ZJJu/r1uo0tYr4RyG.evGcN22.0T3IfqxwSc4JFFwWyvsY3mO', 'testtest', 'Casablanca', '2026-05-13 16:19:11'),
+(5, 'test', 'test', 'smail@gmail.com', '$2b$10$RZRNpb5gBiEPcIlb5Nzd7uhyWlFAq/tSm01rsJQjajIIVKXe3iPfG', 'magasin', 'Oujda', '2026-05-13 17:01:29'),
+(6, 'lahcen', 'houban', 'lahcen@gmail.com', '$2b$10$rtyQTkRLP52fxuKcRg3Jgu1rM8HkT5hjhU1mthRXVYD02bMN6Z74O', 'magasin casa', 'Casablanca', '2026-05-15 08:57:39');
 
 -- --------------------------------------------------------
 
@@ -197,7 +229,16 @@ CREATE TABLE `ventes` (
 --
 
 INSERT INTO `ventes` (`id`, `user_id`, `client_id`, `date_vente`, `total`, `montant_paye`, `credit`, `mode_paiement`, `echeance`, `created_at`) VALUES
-(1, 2, 2, '2026-05-07', 20.00, 10.00, 10.00, 'partiel', '2026-05-10', '2026-05-07 00:05:13');
+(1, 2, 2, '2026-05-07', 20.00, 10.00, 10.00, 'partiel', '2026-05-10', '2026-05-07 00:05:13'),
+(3, 4, 5, '2026-05-13', 1000.00, 1000.00, 0.00, 'partiel', '2026-05-19', '2026-05-13 17:06:58'),
+(4, 4, NULL, '2026-05-13', 200.00, 200.00, 0.00, 'partiel', '2026-05-26', '2026-05-13 17:22:44'),
+(5, 4, 5, '2026-05-14', 400.00, 400.00, 0.00, 'credit', '2026-05-26', '2026-05-14 22:38:05'),
+(6, 4, 5, '2026-05-14', 200.00, 20.00, 180.00, 'partiel', '2026-05-13', '2026-05-14 23:09:15'),
+(7, 6, 8, '2026-05-15', 55.00, 30.00, 25.00, 'partiel', '2026-05-16', '2026-05-15 09:33:51'),
+(8, 6, 8, '2026-05-15', 110.00, 47.00, 63.00, 'partiel', '2026-05-10', '2026-05-15 09:38:33'),
+(9, 6, 7, '2026-05-15', 5.00, 5.00, 0.00, 'comptant', NULL, '2026-05-15 09:39:35'),
+(10, 6, 6, '2026-05-15', 180.00, 180.00, 0.00, 'credit', '2026-05-13', '2026-05-15 09:40:57'),
+(11, 6, 7, '2026-05-15', 600.00, 500.00, 100.00, 'partiel', '2026-05-26', '2026-05-15 09:51:06');
 
 --
 -- Indexes for dumped tables
@@ -265,43 +306,43 @@ ALTER TABLE `ventes`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `fournisseurs`
 --
 ALTER TABLE `fournisseurs`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `lignes_vente`
 --
 ALTER TABLE `lignes_vente`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `livraisons`
 --
 ALTER TABLE `livraisons`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `produits`
 --
 ALTER TABLE `produits`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `ventes`
 --
 ALTER TABLE `ventes`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
