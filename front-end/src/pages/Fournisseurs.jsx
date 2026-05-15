@@ -184,6 +184,10 @@ function Fournisseurs() {
       </div>
 
 
+
+
+
+
       {modalOpen && (
         <div className="modal-overlay open">
           <div className="modal">
@@ -202,7 +206,7 @@ function Fournisseurs() {
 
               <div className="form-group mb-14">
                 <label className="form-label">Nom *</label>
-                <input className="form-input" placeholder="Ex : Société Atlas"
+                <input className="form-input" placeholder="Ex : Société du Lait"
                   value={form.nom}
                   onChange={e => setForm({ ...form, nom: e.target.value })} />
               </div>
@@ -217,7 +221,7 @@ function Fournisseurs() {
                 </div>
                 <div className="form-group">
                   <label className="form-label">Téléphone</label>
-                  <input className="form-input" placeholder="+212 5XX XXX XXX"
+                  <input className="form-input" placeholder="+212 6XX XXX XXX"
                     value={form.tel}
                     onChange={e => setForm({ ...form, tel: e.target.value })} />
                 </div>
@@ -226,7 +230,7 @@ function Fournisseurs() {
               <div className="form-group mb-14">
                 <label className="form-label">Email</label>
                 <input className="form-input" type="email"
-                  placeholder="contact@fournisseur.ma"
+                  placeholder="societe@gmail.com"
                   value={form.email}
                   onChange={e => setForm({ ...form, email: e.target.value })} />
               </div>

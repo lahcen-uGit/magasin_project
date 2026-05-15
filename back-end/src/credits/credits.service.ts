@@ -20,6 +20,7 @@ export class CreditsService {
   async findAll(authHeader: string) {
     const userId = this.getUserId(authHeader);
 
+    
 
     const creditsClients = await this.db.query(
       `SELECT v.*,

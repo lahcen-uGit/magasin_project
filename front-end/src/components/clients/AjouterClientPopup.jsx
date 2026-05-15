@@ -13,13 +13,13 @@ function AjouterClientPopup({ form, setForm, error, fermerModal, enregistrerClie
           <div className="form-grid form-grid-2 mb-14">
             <div className="form-group">
               <label className="form-label">Prénom</label>
-              <input className="form-input" placeholder="Ahmed"
+              <input className="form-input" placeholder="prenom"
                 value={form.prenom}
                 onChange={e => setForm({ ...form, prenom: e.target.value })} />
             </div>
             <div className="form-group">
               <label className="form-label">Nom</label>
-              <input className="form-input" placeholder="Benali"
+              <input className="form-input" placeholder="nom"
                 value={form.nom}
                 onChange={e => setForm({ ...form, nom: e.target.value })} />
             </div>

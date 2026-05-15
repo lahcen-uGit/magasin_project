@@ -51,15 +51,14 @@ function Login() {
 
           <div className="form-group mb-12">
             <label className="form-label">Email</label>
-            <input className="form-input" type="email" placeholder="vous@magasin.ma"
+            <input className="form-input" type="email" placeholder="exemple@gmail.com"
               value={email} onChange={e => setEmail(e.target.value)} />
           </div>
 
           <div className="form-group mb-20">
             <label className="form-label">Mot de passe</label>
-            <input className="form-input" type="password" placeholder="••••••••"
-              value={password} onChange={e => setPassword(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && handleLogin()} />
+            <input className="form-input" type="password" placeholder="********"
+              value={password} onChange={e => setPassword(e.target.value)} />
           </div>
 
           <button className="btn btn-primary w-full" style={{ padding: '11px' }}

@@ -11,7 +11,7 @@ export class DatabaseService implements OnModuleInit {
       password: '',
       database: 'magasin_db',
     });
-    console.log(' MySQL connecté');
+    console.log(' MySQL connecte');
   }
 
   async query(sql: string, params: any[] = []) {

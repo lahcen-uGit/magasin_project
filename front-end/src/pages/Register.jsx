@@ -65,19 +65,19 @@ function Register() {
           <div className="form-grid form-grid-2 mb-12">
             <div className="form-group">
               <label className="form-label">Prénom <span className="required">*</span></label>
-              <input className="form-input" placeholder="Ahmed"
+              <input className="form-input" placeholder="prenom"
                 value={prenom} onChange={e => setPrenom(e.target.value)} />
             </div>
             <div className="form-group">
               <label className="form-label">Nom <span className="required">*</span></label>
-              <input className="form-input" placeholder="Benali"
+              <input className="form-input" placeholder="nom"
                 value={nom} onChange={e => setNom(e.target.value)} />
             </div>
           </div>
 
           <div className="form-group mb-12">
             <label className="form-label">Nom du magasin <span className="required">*</span></label>
-            <input className="form-input" placeholder="Ex : Épicerie Al Amal"
+            <input className="form-input" placeholder="Ex : magasin Casablanca"
               value={shopName} onChange={e => setShopName(e.target.value)} />
           </div>
 
@@ -90,13 +90,13 @@ function Register() {
 
           <div className="form-group mb-12">
             <label className="form-label">Email <span className="required">*</span></label>
-            <input className="form-input" type="email" placeholder="vous@magasin.ma"
+            <input className="form-input" type="email" placeholder="exemple@gmail.com"
               value={email} onChange={e => setEmail(e.target.value)} />
           </div>
 
           <div className="form-group mb-20">
             <label className="form-label">Mot de passe <span className="required">*</span></label>
-            <input className="form-input" type="password" placeholder="Min. 6 caractères"
+            <input className="form-input" type="password" placeholder="********"
               value={password} onChange={e => setPassword(e.target.value)} />
           </div>
 

@@ -335,6 +335,9 @@ function Ventes() {
         </div>
       </div>
 
+
+      
+
       {modalOpen && ( 
         <div className="modal-overlay open">
           <div className="modal modal-lg">
@@ -352,7 +355,7 @@ function Ventes() {
                   <select className="form-select"
                     value={form.clientId}
                     onChange={e => setForm({ ...form, clientId: e.target.value })}>
-                    <option value="">-- Client comptoir --</option>
+                    <option value="">-- Client inconnu --</option>
                     {clients.map(c => (
                       <option key={c.id} value={c.id}>
                         {c.prenom} {c.nom}

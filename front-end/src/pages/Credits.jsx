@@ -7,16 +7,16 @@ function Credits() {
 
 
   const [creditsClients, setCreditsClients] = useState([])
-  const [dettesFourn,    setDettesFourn]    = useState([])
-  const [loading,        setLoading]        = useState(true)
+  const [dettesFourn, setDettesFourn] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const [modalClientOpen, setModalClientOpen] = useState(false)
-  const [venteSelectee,   setVenteSelectee]   = useState(null)
-  const [montantClient,   setMontantClient]   = useState(0)
+  const [venteSelectee, setVenteSelectee] = useState(null)
+  const [montantClient, setMontantClient]  = useState(0)
 
   const [modalFournOpen, setModalFournOpen] = useState(false)
-  const [livSelectee,    setLivSelectee]    = useState(null)
-  const [montantFourn,   setMontantFourn]   = useState(0)
+  const [livSelectee, setLivSelectee]  = useState(null)
+  const [montantFourn, setMontantFourn]  = useState(0)
 
   const token = localStorage.getItem('token')
 
@@ -32,14 +32,14 @@ function Credits() {
       })
       const data = await res.json()
       setCreditsClients(data.creditsClients || [])
-      setDettesFourn(data.dettesFourn       || [])
+      setDettesFourn(data.dettesFourn || [])
     } catch {}
     setLoading(false)
   }
 
 
 
-  const jRestants = (date) => {
+  const jourRestants = (date) => {
     if (!date) return null
     return Math.ceil((new Date(date) - new Date()) / (1000 * 60 * 60 * 24))
   }
@@ -47,11 +47,16 @@ function Credits() {
   const fmtDate = (d) => d ? new Date(d).toLocaleDateString('fr-MA') : '—'
 
 
+
+
   const ouvrirPayerClient = (vente) => {
     setVenteSelectee(vente)
     setMontantClient(parseFloat(vente.credit))
     setModalClientOpen(true)
   }
+
+
+
 
   const payerClient = async () => {
     if (!venteSelectee) return
@@ -65,11 +70,16 @@ function Credits() {
   }
 
 
+
+
   const ouvrirPayerFourn = (liv) => {
     setLivSelectee(liv)
     setMontantFourn(parseFloat(liv.credit))
     setModalFournOpen(true)
   }
+
+
+  
 
   const payerFourn = async () => {
     if (!livSelectee) return
@@ -83,10 +93,10 @@ function Credits() {
   }
 
 
-  const badgeStatut = (j) => {
+  const Statut = (j) => {
     if (j === null) return <span className="badge badge-blue">En cours</span>
-    if (j < 0)      return <span className="badge badge-red"><i className="fas fa-exclamation-circle"></i> Retard</span>
-    if (j <= 7)     return <span className="badge badge-amber"><i className="fas fa-exclamation-triangle"></i> Urgent</span>
+    if (j < 0)  return <span className="badge badge-red"><i className="fas fa-exclamation-circle"></i> Retard</span>
+    if (j <= 7)  return <span className="badge badge-amber"><i className="fas fa-exclamation-triangle"></i> Urgent</span>
     return <span className="badge badge-blue">En cours</span>
   }
 
@@ -94,8 +104,7 @@ function Credits() {
   const totalARecevoir = creditsClients.reduce((s, v) => s + parseFloat(v.credit || 0), 0)
   const totalAPayer    = dettesFourn.reduce((s, l)   => s + parseFloat(l.credit || 0), 0)
   const balance        = totalARecevoir - totalAPayer
-  const totalSoldes    = creditsClients.filter(v => parseFloat(v.credit) === 0).length
-                       + dettesFourn.filter(l => parseFloat(l.credit) === 0).length
+
 
   return (
     <div className="page-wrap">
@@ -132,11 +141,7 @@ function Credits() {
           </div>
           <div className="kpi-sub">{balance >= 0 ? 'positif' : 'négatif'}</div>
         </div>
-        <div className="kpi" style={{ '--kpi-color': '#1565c0' }}>
-          <div className="kpi-label">Soldés total</div>
-          <div className="kpi-value">{totalSoldes}</div>
-          <div className="kpi-sub">crédits remboursés</div>
-        </div>
+      
       </div>
 
       <div className="card mb-14">
@@ -172,7 +177,7 @@ function Credits() {
                 </thead>
                 <tbody>
                   {creditsClients.map(v => {
-                    const j = jRestants(v.echeance)
+                    const j = jourRestants(v.echeance)
                     return (
                       <tr key={v.id}>
                         <td>
@@ -200,7 +205,7 @@ function Credits() {
                         <td className="text-sm text-muted">
                           {fmtDate(v.echeance)}
                         </td>
-                        <td>{badgeStatut(j)}</td>
+                        <td>{Statut(j)}</td>
                         <td>
                           <button className="btn btn-green btn-xs"
                             onClick={() => ouvrirPayerClient(v)}>
@@ -250,7 +255,7 @@ function Credits() {
                 </thead>
                 <tbody>
                   {dettesFourn.map(l => {
-                    const j = jRestants(l.echeance)
+                    const j = jourRestants(l.echeance)
                     return (
                       <tr key={l.id}>
                         <td>
@@ -276,7 +281,7 @@ function Credits() {
                         <td className="text-sm text-muted">
                           {fmtDate(l.echeance)}
                         </td>
-                        <td>{badgeStatut(j)}</td>
+                        <td>{Statut(j)}</td>
                         <td>
                           <button className="btn btn-green btn-xs"
                             onClick={() => ouvrirPayerFourn(l)}>
@@ -304,7 +309,7 @@ function Credits() {
 
               <div className="payer-info mb-14">
                 <div className="fw-bold mb-8">
-                  {venteSelectee.client_nom || 'Client comptoir'}
+                  {venteSelectee.client_nom || 'Client inconnu'}
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted">Restant dû :</span>
@@ -338,6 +343,13 @@ function Credits() {
         </div>
       )}
 
+
+
+
+
+
+
+
       {modalFournOpen && livSelectee && (
         <div className="modal-overlay open">
           <div className="modal" style={{ maxWidth: '400px' }}>
@@ -348,7 +360,7 @@ function Credits() {
             <div className="modal-body">
 
               <div className="payer-info mb-14">
-                <div className="fw-bold mb-8">{livSelectee.fournisseur_nom}</div>
+                <div className="fw-bold mb-8">{livSelectee.fournisseur_nom || 'Fournisseur inconnu'}</div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted">Restant dû :</span>
                   <span className="text-red fw-bold">

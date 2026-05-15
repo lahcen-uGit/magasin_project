@@ -1,21 +1,21 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 import '../styles/Layout.css'
-//layout
+//layout principal 
 const titles = {
-  '/credits':      'Crédits en cours',
-  '/ventes':       'Ventes',
-  '/produits':     'Produits & Stock',
-  '/clients':      'Clients',
+  '/credits':  'Crédits en cours',
+  '/ventes': 'Ventes',
+  '/produits': 'Produits & Stock',
+  '/clients':  'Clients',
   '/fournisseurs': 'Fournisseurs',
-  '/livraisons':   'Livraisons',
-  '/parametres':   'Paramètres',
+  '/livraisons': 'Livraisons',
+  '/parametres': 'Paramètres',
 }
 
 function Layout({ children }) {
   const navigate = useNavigate()
   const location = useLocation()
   const shopName = localStorage.getItem('shopName') || 'Mon Magasin'
-  const prenom   = localStorage.getItem('prenom')   || ''
+  const prenom  = localStorage.getItem('prenom')   || ''
 
   const handleLogout = () => {
     localStorage.removeItem('token')
@@ -78,6 +78,8 @@ function Layout({ children }) {
 
         </nav>
 
+        
+
         <div className="sidebar-footer">
           <div className="shop-name">{shopName}</div>
           <div className="shop-city"><i className="fas fa-map-marker-alt"></i> Maroc</div>
@@ -89,9 +91,13 @@ function Layout({ children }) {
       </aside>
 
 
+
+
+
+
       <main className="main">
         <header className="topbar">
-          <div className="topbar-title">{titles[location.pathname] || 'Dukan'}</div>
+          <div className="topbar-title">{titles[location.pathname] || 'TrackSales'}</div>
           <div className="topbar-right">
             <div className="notif-btn" onClick={() => navigate('/credits')}>
               <i className="fas fa-bell"></i>

@@ -38,10 +38,10 @@ function Clients() {
   const ouvrirModal = (client = null) => {
     setEditClient(client)
     setForm(client ? {
-      prenom:        client.prenom,
-      nom:           client.nom,
-      tel:           client.tel           || '',
-      adresse:       client.adresse       ||   '',
+      prenom: client.prenom,
+      nom: client.nom,
+      tel: client.tel || '',
+      adresse: client.adresse || '',
       limite_credit: client.limite_credit || 0,
     } : { prenom: '', nom: '', tel: '', adresse: '', limite_credit: 0 })
     setError('')
@@ -57,7 +57,7 @@ function Clients() {
       setError('Prénom et nom sont obligatoires')
       return
     }
-    const url    = editClient
+    const url  = editClient
       ? `http://localhost:3000/clients/${editClient.id}`
       : 'http://localhost:3000/clients'
     const method = editClient ? 'PUT' : 'POST'
@@ -74,6 +74,9 @@ function Clients() {
     }
   }
 
+
+
+
   const supprimerClient = async (id) => {
     if (!window.confirm('Supprimer ce client ?')) return
     await fetch(`http://localhost:3000/clients/${id}`, {
@@ -83,8 +86,8 @@ function Clients() {
     getClients()
   }
 
-  const totalClients  = clients.length
-  const totalCredit   = clients.reduce((s, c) => s + parseFloat(c.total_credit || 0), 0)
+  const totalClients = clients.length
+  const totalCredit = clients.reduce((s, c) => s + parseFloat(c.total_credit || 0), 0)
   const clientsCredit = clients.filter(c => parseFloat(c.total_credit) > 0).length
 
   return (
@@ -184,6 +187,7 @@ function Clients() {
           )}
         </div>
       </div>
+
 
 
       
